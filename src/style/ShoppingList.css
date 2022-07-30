@@ -1,0 +1,20 @@
+.lmj-plant-list {
+	list-style-type: none;
+	padding: 16px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 850px;
+	margin: 0;
+	margin-bottom: 16px;
+}
+
+.lmj-shoppinglist-add {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.lmj-shoppinglist-add-button {
+	width: 93%;
+}
