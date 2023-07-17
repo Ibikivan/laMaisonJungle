@@ -12,10 +12,3 @@
 .lmj-footer-elem {
 	margin-bottom: 10px;
 }
-
-.lmj-footer-mail {
-	display: flex;
-	margin: 10px;
-	width: 250px;
-	justify-content: space-between;
-}

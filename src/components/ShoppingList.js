@@ -1,62 +1,67 @@
-import { plantList } from '../data/plantList'
-import PlantItem from './PlantItem'
-import "../style/ShoppingList.css"
+import { useState, useEffect } from "react";
+import { plantList } from "../datas/plantList";
+import '../styles/ShoppingList.css';
+import PlantItem from "./PlantItem";
+import Categories from "./Categories";
+import { addToCart } from "../utilities/helpers";
 
-
-function ShoppingList({cart, updateCart, setIsOpen, inputValue, setInputValue}) {
-	function addToCart(name, price) {
-		const curentPlant = cart.find((plantType) => plantType.name === name)
-		
-		if (curentPlant) {
-			const newFilteredTable = cart.filter((plant) => plant.name !== name)
-
-			updateCart(
-				[...newFilteredTable, {name, price, amount: curentPlant.amount + 1}]
-			)
-
-			setIsOpen(true)
-		} else {
-			updateCart([...cart, {name, price, amount: 1}])
-
-			setIsOpen(true)
-		}
-	}
-
-	// mmon expression à utiliser pour les catégories commence ici, lui ajouter les données issues du state via les props -----------
-
-		function categorisation() {
-			let restricted = []
-	
-			if (inputValue === "Toutes les categories") {
-				return restricted = plantList
-			} else {
-				return (restricted = plantList.filter(
-					(plant) => plant.category === inputValue
-				))
-			}
-		}
-
-	// mon expression à utiliser pour les catégories finie ici ----------------------------
-
-	return (
-		<div className='lmj-shopping-list'>
-			<ul className='lmj-plant-list'>
-				{categorisation().map(({ id, cover, name, water, light, price }) => (
-					<div key={id} className="lmj-shoppinglist-add">
-						<PlantItem
-							cover={cover}
-							name={name}
-							water={water}
-							light={light}
-							price={price}
-						/>
-
-						<button type="button" className="lmj-shoppinglist-add-button btn btn-primary" onClick={() => addToCart(name, price)}>Ajouter</button>
-					</div>
-				))}
-			</ul>
-		</div>
-	)
+function showCategory(currentCat, plantList) {
+    if (currentCat === "---") {
+        return plantList;
+    } else {
+        return plantList.filter((plant) => plant.category === currentCat);
+    };
 }
 
-export default ShoppingList
+function ShoppingList({cart, updateCart, setIsOpen, setModalData, setModalIsOpen}) {
+    const storedCategory = JSON.parse(localStorage.getItem('active_category'));
+    const [category, setCategory] = useState(storedCategory ? storedCategory : "---");
+
+    useEffect(() => {
+        localStorage.setItem('active_category', JSON.stringify(category));
+    },[category]);
+
+    const categories = plantList.reduce((acc, plant) => 
+    acc.includes(plant.category) ? acc : acc.concat(plant.category),
+    []);
+
+    return (
+        <div className="lmj-shoppingList">
+            <Categories
+                categories={categories}
+                category={category}
+                setCategory={setCategory}
+            />
+
+            <ul className="lmj-plant-list">
+                {showCategory(category, plantList).map(({name, cover, id, light, water, price, isSpecialOffer}) => (
+                    <div
+                        key={id}
+                        className="lmj-shoppingList-item"
+                    >
+                        <PlantItem
+                            id={id}
+                            name={name}
+                            cover={cover}
+                            light={light}
+                            water={water}
+                            price={price}
+                            isSpecialOffer={isSpecialOffer}
+                            setModalData={setModalData}
+                            setModalIsOpen={setModalIsOpen}
+                            cart={cart}
+                            updateCart={updateCart}
+                            setIsOpen={setIsOpen}
+                        />
+                        <button
+                            className="lmj-shopping-list-add"
+                            onClick={() => addToCart(id, name, price, cart, updateCart, setIsOpen)}
+                        >Ajouter</button>
+                    </div>
+                ))}
+            </ul>
+        </div>
+    )
+}
+
+export default ShoppingList;

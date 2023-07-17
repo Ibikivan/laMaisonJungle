@@ -1,40 +1,17 @@
-import Sun from "../assests/sun.svg"
-import Water from "../assests/water.svg"
+import sun from '../assets/sun.svg';
+import water from '../assets/water.svg';
+import { handleCare } from '../utilities/helpers';
 
-function CareScale({scaleValue, careType}) {
-    const plantCareValue = {
-        1: "peu",
-        2: "modérément",
-        3: "beaucoup"
-    }
-    
-    const range = [1, 2, 3]
+function CareScale({type, value}) {
+    const range = [1, 2, 3];
 
-    const scaleType = 
-        careType === "light" ? (
-            <img src={Sun} alt="sun-icon" />
-        ) : (
-            <img src={Water} alt="water-icon" />
-    )
+    const careType = type === "light" ?
+    (<img src={sun} alt='sun' />) :
+    (<img src={water} alt='water' />);
 
-    return (
-        <div onClick={() => handleScaleClick(careType, plantCareValue, scaleValue)}>    
-            {
-                range.map((rangeElement) =>
-                    scaleValue >= rangeElement ? (
-                    <span
-                        key={rangeElement.toString()}
-                        >
-                            {scaleType}
-                    </span>) : null
-                )
-            }
-        </div>
-    )
-}
-
-function handleScaleClick(type, careValue, value) {
-    alert(`Cette plante requiert ${careValue[value]} ${type === "light" ? "de lumière" : "d'arrosage"}.`)
+    return (<div title={handleCare(type, value)}>{range.map((mapRange) => (
+        value >= mapRange && careType
+    ))}</div>)
 }
 
 export default CareScale

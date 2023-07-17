@@ -1,0 +1,54 @@
+.lmj-categories {
+	text-align: center;
+	padding-top: 30px;
+}
+
+.lmj-categories-select {
+	margin-right: 15px;
+    font-weight: 300px;
+    padding: 2px;
+}
+
+.lmj-categories-select option {
+    background-color: #333;
+    color: #f2f2f2;
+    border: 1px solid #ccc;
+}
+
+.lmj-categories-select option:checked {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.lmj-categories-reset {
+    position: relative;
+    font-weight: 300px;
+    padding: 3px 10px;
+    border: solid #1f8351 1px;
+    background: none;
+    color: #1f8351;
+    font-weight: bold;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.lmj-categories-reset:hover {
+    color: white;
+    border-radius: 0;
+}
+
+.lmj-categories-reset::before {
+    background: #1f8351;
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.6s ease;
+    width: 0%;
+    height: 105%;
+}
+.lmj-categories-reset:hover::before {
+    width: 105%;
+}

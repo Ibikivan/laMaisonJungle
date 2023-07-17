@@ -1,26 +1,37 @@
-import CareScale from "./CareScale"
-import "../style/PlantItem.css"
+import '../styles/PlantItem.css';
+import CareScale from "./CareScale";
 
-function handleClick(plantName) {
-	alert(`vous voulez acheter 1 ${plantName}, Tres bon choix !`)
+function PlantItem({name, cover, id, light, water, price, isSpecialOffer, setModalData, setModalIsOpen, cart, updateCart, setIsOpen}) {
+    function setModal() {
+        const data = {
+            id: id,
+            name: name,
+            cover: cover,
+            light: light,
+            water: water,
+            price: price,
+            isSpecialOffer: isSpecialOffer,
+            label: `${name} item modal`,
+            cart,
+            updateCart,
+            setIsOpen,
+        };
+
+        setModalData(data);
+        setModalIsOpen(true);
+    }
+    
+    return (
+        <li key={id} className="lmj-plant-item" onClick={setModal}>
+            <img src={cover} alt="Plant item cover" className="lmj-plant-item-cover" />
+            <div  className="lmj-sales">{isSpecialOffer && <span>Soldes | </span>} {price}$CAD</div>
+            {name}
+            <div>
+                <CareScale type="water" value={water} />
+                <CareScale type="light" value={light} />
+            </div>
+        </li>
+    )
 }
 
-function PlantItem({ cover, name, water, light, price }) {
-	return (
-		<li className='lmj-plant-item card'>
-			<img className='lmj-plant-item-cover card-img-top' src={cover} alt={`${name} cover`} onClick={() => handleClick(name)} />
-
-			<div className="card-body">
-				<span className="card-title">{name} : {price} Fcfa</span>
-			
-
-				<div className="card-text">
-					<CareScale careType='water' scaleValue={water} />
-					<CareScale careType='light' scaleValue={light} />
-				</div>
-			</div>
-		</li>
-	)
-}
-
-export default PlantItem
+export default PlantItem;

@@ -1,25 +1,39 @@
-import { plantList } from '../data/plantList'
-import "../style/Categories.css"
+import '../styles/Categories.css';
 
-function Categories({inputValue, setInputValue}) {
-    const categories = plantList.reduce(
-		(acc, plant) =>
-			acc.includes(plant.category) ? acc : acc.concat(plant.category),
-		[]
-	)
-
-    return (
-        <div className='lmj-categories-items'>
-            <select onChange={(e) => setInputValue(e.target.value)}>
-                <option>Toutes les categories</option>
-				{categories.map((cat, index) => (
-					<option key={`${cat} - ${index}`} value={cat}>{cat}</option>
-				))}
-			</select>
-
-			<button onClick={() => setInputValue(inputValue = "Toutes les categories")}>Tout</button>
-        </div>
-    )
+function handleSelection(event, setCategory) {
+    setCategory(event.target.value);
 }
 
-export default Categories
+function resetCategory(setCategory) {
+    setCategory("---");
+}
+
+function Categories({ categories, category, setCategory }) {
+    return (
+        <div className="lmj-categories">
+            <select
+                value={category}
+                onChange={(event) => handleSelection(event, setCategory)}
+                className="lmj-categories-select"
+            >
+                <option value="---">---</option>
+
+                {categories.map((category) => (
+                    <option
+                        key={category}
+                        value={category}
+                    >
+                        {category}
+                    </option>
+                ))}
+            </select>
+
+            <button
+                onClick={() => resetCategory(setCategory)}
+                className="lmj-categories-reset"
+            >Réinitialiser</button>
+        </div>
+    );
+}
+
+export default Categories;

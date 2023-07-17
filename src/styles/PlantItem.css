@@ -1,0 +1,43 @@
+.lmj-plant-item-cover {
+	height: 280px;
+	width: 280px;
+	border-radius: 20px;
+	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.lmj-plant-item {
+	margin: 10px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	text-transform: capitalize;
+	cursor: pointer;
+	width: 280px;
+}
+
+.lmj-plant-item:hover .lmj-plant-item-cover {
+	position: relative;
+	top: 10px;
+	left: 10px;
+	margin-top: -20px;
+	margin-left: -20px;
+	width: 300px;
+	height: 300px;
+}
+.lmj-plant-item:hover .lmj-sales {
+	top: 0;
+	right: 0;
+}
+
+.lmj-sales {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-weight: 500;
+	color: white;
+	padding: 10px 20px;
+	background-color: #31b572;
+    border-radius: 0 20px;
+	transition: all 0.5s ease-in-out;
+}

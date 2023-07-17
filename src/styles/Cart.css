@@ -1,0 +1,143 @@
+.lmj-cart {
+    padding: 32px;
+    color: white;
+    background-color: #31b572;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 300px;
+    min-width: 200px;
+    animation: cartOut 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes cartOut {
+    0% {
+        transform: translateX(-90%);
+    }
+    50% {
+        transform: translateX(10%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.lmj-cart-toggle-button {
+    background: none;
+    outline: none;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    align-self: self-end;
+    padding: 0;
+	color: white;
+	align-self: flex-end;
+}
+
+.lmj-cart-add-button {
+    cursor: pointer;
+    width: 95%;
+    height: 30px;
+    border: solid #055e31 2px;
+    color: #055e31;
+    background-color: white;
+    font-weight: bold;
+    font-size: medium;
+    transition: all 0.5s ease;
+    border-radius: 4px;
+}
+.lmj-cart-add-button:hover {
+    padding: 7px;
+    background: rgb(255, 210, 210);
+    border: solid rgb(255, 81, 81) 2px;
+    color: rgb(255, 81, 81);
+    border-radius: 0;
+}
+
+.lmj-cart-total {
+    padding: 30px 0;
+}
+
+.lmj-cart-closed {
+    padding: 32px;
+    width: 300px;
+    min-width: 200px;
+    animation: cartClodes 1s cubic-bezier(0.82, 0.01, 0.58, 1);
+}
+
+@keyframes cartClodes {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.lmj-cart-closed > button {
+    color: black;
+}
+
+.lmj-cart-delete-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 3px 0;
+}
+
+.lmj-cart-delete-button {
+    background-color: rgb(236, 60, 60);
+    border: none;
+    color: white;
+    margin: 5px;
+    display: none;
+    position: absolute;
+    left: 28px;
+    cursor: pointer;
+    animation: slowRight 0.5s ease;
+    border-radius: 2px;
+}
+
+@keyframes slowRight {
+    from {
+        transform: translateX(-20%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.lmj-cart-delete-element {
+    margin-left: 25px;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.lmj-cart-delete-item:hover .lmj-cart-delete-button {
+    display: inline-block;
+}
+
+.lmj-cart-empty {
+    animation: emptyCart 1s ease;
+}
+
+@keyframes emptyCart {
+    from {
+        transform: translateY(40%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

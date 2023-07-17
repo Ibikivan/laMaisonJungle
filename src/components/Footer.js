@@ -1,36 +1,41 @@
 import { useState } from "react";
-import "../style/Footer.css"
+import '../styles/Footer.css';
+
+function handleClick(inputValue) {
+    if (inputValue.length !== 0) {
+        inputValue.includes("@")
+        ? alert(`Votre addresse : "${inputValue}"`)
+        : alert("Votre email n'est pas valide !");
+    } else {
+        alert("Merci de fournir une alerte !");
+    };
+}
 
 function Footer() {
-    const [inputValue, setInputValue] = useState("")
-    
-    return (
-        <footer className="lmj-footer">    
-            <div className="lmj-footer-elem">
-                Pour les passionnés des plantes 🎄🎋🎍
-            </div>
-            
-            <div className="lmj-footer-elem">Laissez nous votre mail :</div>
-                
-            <div className="lmj-footer-mail">
-                <input value={inputValue}
-                    placeholder="Entrez votre mail"
-                    onChange={(sendEmail) => setInputValue(sendEmail.target.value)}
-                    onBlur={(sendEmail) => blurHandling(sendEmail.target.value)}
-                />
+    const [inputValue, setInputValue] = useState("");
+    const isInputWarning = !inputValue.includes("@");
 
-                <button onClick={() => alert(`l'adresse ${inputValue} sera bientôt envoyable. Merci !`)}>Envoyer</button>
-            </div>
-        </footer>
-    )
+    return (<footer className='lmj-footer'>
+        <div className="lmj-footer-elem">
+            Pour les passionné·e·s de plantes 🌿🌱🌵
+        </div>
+
+        <div className="lmj-footer-elem">Laissez-nous votre mail :</div>
+
+        <div className="lmj-footer-elem">
+            <input
+                onChange={(event) => setInputValue(event.target.value)}
+                value={inputValue}
+                placeholder="Entrez votre addresse"
+            />
+
+            <button onClick={() => handleClick(inputValue)}>Alertez moi 🚨</button>
+        </div>
+
+        {inputValue.length !== 0
+        ? isInputWarning && <div className="lmj-footer-elem">!!! Complétez votre email SVP !!!</div>
+        : null}
+    </footer>)
 }
 
-function blurHandling(valueTyped) {
-    if (!valueTyped.includes("@")) {
-        alert(`ATTENTION !!! ${valueTyped} n'est pas une adresse mail valide.`)
-    }
-}
-
-
-
-export default Footer
+export default Footer;

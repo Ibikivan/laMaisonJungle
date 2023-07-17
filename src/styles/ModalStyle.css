@@ -1,0 +1,14 @@
+.lmj-modal-content {
+    animation: modalUp 1s ease;
+}
+  
+@keyframes modalUp {
+    from {
+        transform: translateY(40%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
