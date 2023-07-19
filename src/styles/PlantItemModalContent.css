@@ -77,6 +77,11 @@
     .modal-content-isSpesial > * {
         margin-bottom: 0;
     }
+    
+    .modal-content-isSpesial > p {
+        position: absolute;
+        right: 20px;
+    }
 
     .modal-content-isSpesial {
         margin-bottom: 0;
