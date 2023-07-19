@@ -61,3 +61,13 @@
 	height: 390px;
 	position: relative;
 }
+
+@media (max-width: 550px) {
+    .lmj-plant-list {
+		padding: 0;
+	}
+
+	.lmj-shoppingList-item {
+		margin: 10px 10px;
+	}
+}

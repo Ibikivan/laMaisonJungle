@@ -59,7 +59,7 @@
     height: 35px;
 }
 
-@media (max-height: 736px) {
+@media (max-width: 450px), (max-height: 736px) {
     .modal-content-cover {
         width: 350px;
         height: 350px;
