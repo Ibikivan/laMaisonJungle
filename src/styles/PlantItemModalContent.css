@@ -48,7 +48,7 @@
 }
 
 .lmj-modal-add {
-	background-color: #31b572;
+    background-color: #31b572;
 	border: #1f8351;
 	color: white;
 	font-weight: bold;
@@ -57,4 +57,29 @@
     cursor: pointer;
     width: 97%;
     height: 35px;
+}
+
+@media (max-height: 736px) {
+    .modal-content-cover {
+        width: 380px;
+        height: 380px;
+        margin: -20px;
+    }
+    
+    .modal-content-details {
+        width: 330px;
+    }
+    
+    .modal-content-details > * {
+        margin: 12px 0;
+    }
+
+    .modal-content-isSpesial > * {
+        margin-bottom: 0;
+    }
+
+    .modal-content-isSpesial {
+        margin-bottom: 0;
+    }
+    
 }
