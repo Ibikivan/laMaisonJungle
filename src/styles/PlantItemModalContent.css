@@ -61,17 +61,17 @@
 
 @media (max-height: 736px) {
     .modal-content-cover {
-        width: 380px;
-        height: 380px;
+        width: 350px;
+        height: 350px;
         margin: -20px;
     }
     
     .modal-content-details {
-        width: 330px;
+        width: 300px;
     }
     
     .modal-content-details > * {
-        margin: 12px 0;
+        margin: 8px 0;
     }
 
     .modal-content-isSpesial > * {

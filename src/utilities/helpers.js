@@ -19,5 +19,5 @@ export function handleCare(type, value) {
         3: "beaucoup"
     };
 
-    return (`Cette plante requiert ${valueLabel[value]} ${type === "light" ? "de lumière" : "d'arrosage"}`)
+    return (`Requiert ${valueLabel[value]} ${type === "light" ? "de lumière" : "d'arrosage"}`)
 };

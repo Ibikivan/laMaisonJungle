@@ -21,10 +21,10 @@ function PlantItemModalContent({ setModalIsOpen, modalData }) {
 
             <div className='modal-content-details'>
                 <h3>Détails</h3>
-                <p>La plante <strong>{modalData.name}</strong> est un excélent choix de plante ; l'une des meilleure dans notre catalogue pour la maison ou l'extérieur.</p>
+                <p>La plante <strong>{modalData.name}</strong> est un excélent choix de plante pour la maison ou l'extérieur.</p>
                 <ul>
-                    <li>{handleCare("water", modalData.water)} <img src={water} alt='water' /> pour se developper.</li>
-                    <li>{handleCare("light", modalData.light)} <img src={sun} alt='sun' /> pour se developper.</li>
+                    <li>{handleCare("water", modalData.water)} <img src={water} alt='water' />.</li>
+                    <li>{handleCare("light", modalData.light)} <img src={sun} alt='sun' />.</li>
                 </ul>
             </div>
 
